@@ -6,7 +6,7 @@
       v-for="(timer, i) in timers"
       :key="i"
       class="d-flex align-center my-2 justify-center">
-      <v-icon>mdi-timer</v-icon>
+      <v-icon :color="timer.done.value ? 'success' : ''" :class="timer.done.value ? 'shake' : ''">mdi-timer</v-icon>
       <v-btn
         icon
         :disabled="timer.remainingTime.value <= 30"
@@ -65,7 +65,7 @@
         const matchesMin = text.matchAll(regexMins);
         const timers = [];
         for (const match of matchesMin) {
-          timers.push(createTimer(Number(match[1]) * 60));
+          timers.push(createTimer(Number(match[1]) * 1));
         }
         return timers;
       };
@@ -154,3 +154,22 @@
     },
   };
 </script>
+<style scoped>
+  .shake {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  }
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+</style>
