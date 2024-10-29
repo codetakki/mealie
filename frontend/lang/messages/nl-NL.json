@@ -571,7 +571,10 @@
       "start-timer": "Kookwekker starten",
       "pause-timer": "Kookwekker pauzeren",
       "resume-timer": "Kookwekker hervatten",
-      "stop-timer": "Kookwekker stoppen"
+      "stop-timer": "Kookwekker stoppen",
+      "continue": "Doorgaan",
+      "pause": "Pauze",
+      "start": "Timer starten"
     },
     "edit-timeline-event": "Bewerk tijdlijngebeurtenis",
     "timeline": "Tijdlijn",

@@ -571,7 +571,10 @@
       "start-timer": "Iniciar Temporizador",
       "pause-timer": "Pausar Temporizador",
       "resume-timer": "Reanudar Temporizador",
-      "stop-timer": "Detener temporizador"
+      "stop-timer": "Detener temporizador",
+      "continue": "Continuar",
+      "pause": "Pausa",
+      "start": "Iniciar temporizador"
     },
     "edit-timeline-event": "Editar evento en la cronología",
     "timeline": "Cronología",

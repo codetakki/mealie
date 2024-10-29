@@ -253,6 +253,9 @@
                         :markup="getIngredientByRefId(ing.referenceId)"
                       />
                     </div>
+                    <div>
+                      <RecipePageInstructionsTimer :text="step.text"></RecipePageInstructionsTimer>
+                    </div>
                   </v-card-text>
                 </div>
               </v-expand-transition>
@@ -279,6 +282,7 @@ import {
   nextTick,
 } from "@nuxtjs/composition-api";
 import RecipeIngredientHtml from "../../RecipeIngredientHtml.vue";
+import RecipePageInstructionsTimer from "./RecipePageInstructionsTimer.vue";
 import { RecipeStep, IngredientReferences, RecipeIngredient, RecipeAsset, Recipe } from "~/lib/api/types/recipe";
 import { parseIngredientText } from "~/composables/recipes";
 import { uuid4, detectServerBaseUrl } from "~/composables/use-utils";
@@ -300,6 +304,7 @@ export default defineComponent({
     draggable,
     RecipeIngredientHtml,
     DropZone,
+    RecipePageInstructionsTimer,
   },
   props: {
     value: {

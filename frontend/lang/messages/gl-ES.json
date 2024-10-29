@@ -571,7 +571,10 @@
       "start-timer": "Start Timer",
       "pause-timer": "Pause Timer",
       "resume-timer": "Resume Timer",
-      "stop-timer": "Stop Timer"
+      "stop-timer": "Stop Timer",
+      "continue": "Continuar",
+      "pause": "Pausa",
+      "start": "Iniciar o temporizador"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",

@@ -571,7 +571,10 @@
       "start-timer": "Iniciar Temporizador",
       "pause-timer": "Pausar Temporizador",
       "resume-timer": "Continuar Temporizador",
-      "stop-timer": "Parar Temporizador"
+      "stop-timer": "Parar Temporizador",
+      "continue": "Continuar",
+      "pause": "Pausa",
+      "start": "Iniciar cronômetro"
     },
     "edit-timeline-event": "Editar Linha do Tempo do Evento",
     "timeline": "Linha do Tempo",

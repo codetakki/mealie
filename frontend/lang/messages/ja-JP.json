@@ -571,7 +571,10 @@
       "start-timer": "タイマー開始",
       "pause-timer": "タイマーを一時停止",
       "resume-timer": "タイマーを再開",
-      "stop-timer": "タイマーを停止"
+      "stop-timer": "タイマーを停止",
+      "continue": "続く",
+      "pause": "一時停止",
+      "start": "タイマーを開始します"
     },
     "edit-timeline-event": "タイムラインイベントの編集",
     "timeline": "タイムライン",

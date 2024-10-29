@@ -571,7 +571,10 @@
       "start-timer": "Démarrer le minuteur",
       "pause-timer": "Mettre en pause le minuteur",
       "resume-timer": "Reprendre le minuteur",
-      "stop-timer": "Arrêter le minuteur"
+      "stop-timer": "Arrêter le minuteur",
+      "continue": "Continuer",
+      "pause": "Pause",
+      "start": "Démarrer la minuterie"
     },
     "edit-timeline-event": "Modifier l’événement dans l’historique",
     "timeline": "Historique",

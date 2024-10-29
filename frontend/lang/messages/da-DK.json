@@ -571,7 +571,10 @@
       "start-timer": "Start timer",
       "pause-timer": "Sæt timer på pause",
       "resume-timer": "Genoptag Timer",
-      "stop-timer": "Stop timer"
+      "stop-timer": "Stop timer",
+      "continue": "Fortsætte",
+      "pause": "Pause",
+      "start": "Start timer"
     },
     "edit-timeline-event": "Rediger tidslinjebegivenhed",
     "timeline": "Tidslinje",

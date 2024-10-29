@@ -571,7 +571,10 @@
       "start-timer": "Avvia timer",
       "pause-timer": "Metti in pausa il contaminuti",
       "resume-timer": "Riprendi il contaminuti",
-      "stop-timer": "Arresta il Timer"
+      "stop-timer": "Arresta il Timer",
+      "continue": "Continuare",
+      "pause": "Pausa",
+      "start": "Avvia il timer"
     },
     "edit-timeline-event": "Modifica evento sulla linea temporale",
     "timeline": "Linea temporale",

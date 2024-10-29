@@ -571,7 +571,10 @@
       "start-timer": "Begin die kombuis timer",
       "pause-timer": "Onderbreek die kombuis timer",
       "resume-timer": "Hervat kombuis timer",
-      "stop-timer": "Stop die kombuis timer"
+      "stop-timer": "Stop die kombuis timer",
+      "continue": "Gaan voort",
+      "pause": "Pouse",
+      "start": "Begin timer"
     },
     "edit-timeline-event": "Wysig tydlyn gebeurtenis",
     "timeline": "Tydlyn",

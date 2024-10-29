@@ -571,7 +571,10 @@
       "start-timer": "Pornește cronometrul",
       "pause-timer": "Pauză cronometru",
       "resume-timer": "Reluați cronometrul",
-      "stop-timer": "Oprește Cronometrul"
+      "stop-timer": "Oprește Cronometrul",
+      "continue": "Continua",
+      "pause": "Pauză",
+      "start": "Porniți cronometrul"
     },
     "edit-timeline-event": "Modifică Evenimentul din Cronologie",
     "timeline": "Cronologie",

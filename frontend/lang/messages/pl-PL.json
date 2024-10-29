@@ -571,7 +571,10 @@
       "start-timer": "Włącz minutnik",
       "pause-timer": "Zatrzymaj minutnik",
       "resume-timer": "Wznów minutnik",
-      "stop-timer": "Zatrzymaj minutnik"
+      "stop-timer": "Zatrzymaj minutnik",
+      "continue": "Kontynuować",
+      "pause": "Pauza",
+      "start": "Uruchom minutnik"
     },
     "edit-timeline-event": "Edytuj zdarzenie osi czasu",
     "timeline": "Oś czasu",
