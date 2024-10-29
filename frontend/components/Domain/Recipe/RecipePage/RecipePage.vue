@@ -65,16 +65,20 @@
     <v-dialog fullscreen :value="isCookMode">
       <v-sheet v-if="isCookMode" :style="{height: $vuetify.breakpoint.smAndUp ? '100%': ''}">
         <v-row style="height: 100%;"  no-gutters class="overflow-hidden">
-          <v-col cols="12" sm="4" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;">
+          <v-col cols="12" sm="5" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;" order-sm="1">
             <div class="d-flex align-center">
               <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
               <v-spacer/>
-              <v-btn icon @click="toggleCookMode()"><v-icon>mdi-close</v-icon></v-btn>
+              <v-btn
+                icon
+                @click="toggleCookMode()"
+                >
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
             </div>
 
             <RecipePageIngredientToolsView v-if="!isEditForm" :recipe="recipe" :scale="scale" />
           </v-col>
-          <v-divider vertical ></v-divider>
           <v-col class="overflow-y-auto px-4 py-2" style="height: 100%;" >
               <RecipePageInstructions
                 v-model="recipe.recipeInstructions"
