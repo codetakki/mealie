@@ -75,9 +75,7 @@
           </v-col>
           <v-divider vertical ></v-divider>
           <v-col cols="4" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;">
-            <div class="d-flex justify-space-between align-center">
-              <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
-            </div>
+            <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
 
             <RecipePageIngredientToolsView v-if="!isEditForm" :recipe="recipe" :scale="scale" />
           </v-col>
@@ -106,7 +104,6 @@ import {
 useRoute,
 } from "@nuxtjs/composition-api";
 import { invoke, until } from "@vueuse/core";
-import RecipeTimerMenu from "../RecipeTimerMenu.vue";
 import RecipePageEditorToolbar from "./RecipePageParts/RecipePageEditorToolbar.vue";
 import RecipePageFooter from "./RecipePageParts/RecipePageFooter.vue";
 import RecipePageHeader from "./RecipePageParts/RecipePageHeader.vue";
@@ -150,7 +147,6 @@ export default defineComponent({
     RecipeNotes,
     RecipePageInstructions,
     RecipePageFooter,
-    RecipeTimerMenu
   },
   props: {
     recipe: {
