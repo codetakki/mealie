@@ -65,7 +65,7 @@
         const matchesMin = text.matchAll(regexMins);
         const timers = [];
         for (const match of matchesMin) {
-          timers.push(createTimer(Number(match[1]) * 1));
+          timers.push(createTimer(Number(match[1]) * 60));
         }
         return timers;
       };
