@@ -62,8 +62,8 @@
         <RecipePageFooter :recipe="recipe" />
       </v-card-text>
     </v-card>
-    <v-dialog fullscreen :value="isCookMode">
-      <v-sheet v-if="isCookMode" :style="{height: $vuetify.breakpoint.smAndUp ? '100%': ''}">
+    <v-dialog fullscreen :value="isCookMode" transition="dialog-bottom-transition">
+      <v-sheet :style="{height: $vuetify.breakpoint.smAndUp ? '100%': ''}">
         <v-row style="height: 100%;"  no-gutters class="overflow-hidden">
           <v-col cols="12" sm="5" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;" order-sm="1">
             <div class="d-flex align-center">
