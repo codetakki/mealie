@@ -66,7 +66,7 @@
 
     <div class="d-flex justify-space-between justify-start">
       <h2 class="mb-4 mt-1">{{ $t("recipe.instructions") }}</h2>
-      <BaseButton v-if="!isEditForm && showCookMode" minor cancel color="primary" @click="toggleCookMode()">
+      <BaseButton v-if="!isEditForm " minor cancel color="primary" @click="toggleCookMode()">
         <template #icon>
           {{ $globals.icons.primary }}
         </template>
