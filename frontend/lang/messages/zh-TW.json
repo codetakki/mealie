@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "繼續",
       "pause": "暫停",
-      "start": "啟動定時器"
+      "start": "啟動定時器",
+      "minutes": "分分鐘",
+      "minute": "分分鐘"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",

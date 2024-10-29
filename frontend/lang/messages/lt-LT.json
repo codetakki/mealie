@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Tęsti",
       "pause": "Pauzė",
-      "start": "Pradėti laikmatį"
+      "start": "Pradėti laikmatį",
+      "minutes": "minučių",
+      "minute": "minutę"
     },
     "edit-timeline-event": "Redaguoti laiko juostos įvykį",
     "timeline": "Laiko juosta",

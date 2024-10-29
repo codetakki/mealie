@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Nastaviti",
       "pause": "Pauza",
-      "start": "Pokreni mjerač vremena"
+      "start": "Pokreni mjerač vremena",
+      "minutes": "minuta",
+      "minute": "minuta"
     },
     "edit-timeline-event": "Uredi Događaj Vremenske Crte",
     "timeline": "Vremenska Crta",

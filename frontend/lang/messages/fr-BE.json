@@ -574,7 +574,9 @@
       "stop-timer": "Arrêter le minuteur",
       "continue": "Continuer",
       "pause": "Pause",
-      "start": "Démarrer la minuterie"
+      "start": "Démarrer la minuterie",
+      "minutes": "minutes",
+      "minute": "minute"
     },
     "edit-timeline-event": "Modifier l’événement dans l’historique",
     "timeline": "Historique",

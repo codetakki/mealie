@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Turpināt",
       "pause": "Pauze",
-      "start": "Sāciet taimeri"
+      "start": "Sāciet taimeri",
+      "minutes": "minūtes",
+      "minute": "minūte"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",

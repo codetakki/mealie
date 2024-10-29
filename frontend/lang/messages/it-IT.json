@@ -574,7 +574,9 @@
       "stop-timer": "Arresta il Timer",
       "continue": "Continuare",
       "pause": "Pausa",
-      "start": "Avvia il timer"
+      "start": "Avvia il timer",
+      "minutes": "minuti",
+      "minute": "minuto"
     },
     "edit-timeline-event": "Modifica evento sulla linea temporale",
     "timeline": "Linea temporale",

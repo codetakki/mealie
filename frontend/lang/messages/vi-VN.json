@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Tiếp tục",
       "pause": "Tạm dừng",
-      "start": "Bắt đầu hẹn giờ"
+      "start": "Bắt đầu hẹn giờ",
+      "minutes": "phút",
+      "minute": "phút"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",

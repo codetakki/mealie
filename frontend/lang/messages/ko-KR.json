@@ -574,7 +574,9 @@
       "stop-timer": "타이머 정지",
       "continue": "계속하다",
       "pause": "정지시키다",
-      "start": "타이머 시작"
+      "start": "타이머 시작",
+      "minutes": "분",
+      "minute": "분"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "타임라인",

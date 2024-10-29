@@ -574,7 +574,9 @@
       "stop-timer": "Stop timer",
       "continue": "Fortsætte",
       "pause": "Pause",
-      "start": "Start timer"
+      "start": "Start timer",
+      "minutes": "minutter",
+      "minute": "minut"
     },
     "edit-timeline-event": "Rediger tidslinjebegivenhed",
     "timeline": "Tidslinje",

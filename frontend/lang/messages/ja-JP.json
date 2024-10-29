@@ -574,7 +574,9 @@
       "stop-timer": "タイマーを停止",
       "continue": "続く",
       "pause": "一時停止",
-      "start": "タイマーを開始します"
+      "start": "タイマーを開始します",
+      "minutes": "分",
+      "minute": "分"
     },
     "edit-timeline-event": "タイムラインイベントの編集",
     "timeline": "タイムライン",

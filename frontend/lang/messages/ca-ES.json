@@ -574,7 +574,9 @@
       "stop-timer": "Atura el temporitzador",
       "continue": "Continua",
       "pause": "Pausa",
-      "start": "Inicieu el temporitzador"
+      "start": "Inicieu el temporitzador",
+      "minutes": "minuts",
+      "minute": "minut"
     },
     "edit-timeline-event": "Edita l'esdeveniment de la cronologia",
     "timeline": "Cronologia",

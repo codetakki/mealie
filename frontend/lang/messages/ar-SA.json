@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "يكمل",
       "pause": "يوقف",
-      "start": "بدء الموقت"
+      "start": "بدء الموقت",
+      "minutes": "دقائق",
+      "minute": "دقيقة"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",

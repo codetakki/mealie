@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Pokračovat",
       "pause": "Pauza",
-      "start": "Spustit časovač"
+      "start": "Spustit časovač",
+      "minutes": "zápis",
+      "minute": "minuta"
     },
     "edit-timeline-event": "Upravit událost časové osy",
     "timeline": "Časová osa",

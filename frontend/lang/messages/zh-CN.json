@@ -574,7 +574,9 @@
       "stop-timer": "终止计时",
       "continue": "继续",
       "pause": "暂停",
-      "start": "启动定时器"
+      "start": "启动定时器",
+      "minutes": "分钟",
+      "minute": "分钟"
     },
     "edit-timeline-event": "编辑时间轴事件",
     "timeline": "时间轴",

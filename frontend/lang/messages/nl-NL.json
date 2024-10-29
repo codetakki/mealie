@@ -574,7 +574,9 @@
       "stop-timer": "Kookwekker stoppen",
       "continue": "Doorgaan",
       "pause": "Pauze",
-      "start": "Timer starten"
+      "start": "Timer starten",
+      "minutes": "notulen",
+      "minute": "minuut"
     },
     "edit-timeline-event": "Bewerk tijdlijngebeurtenis",
     "timeline": "Tijdlijn",

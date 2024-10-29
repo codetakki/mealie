@@ -574,7 +574,9 @@
       "stop-timer": "Wecker stoppen",
       "continue": "Weitermachen",
       "pause": "Pause",
-      "start": "Timer starten"
+      "start": "Timer starten",
+      "minutes": "Minuten",
+      "minute": "Minute"
     },
     "edit-timeline-event": "Zeitstrahl-Ereignis bearbeiten",
     "timeline": "Zeitstrahl",

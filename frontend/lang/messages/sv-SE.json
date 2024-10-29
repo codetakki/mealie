@@ -574,7 +574,9 @@
       "stop-timer": "Stoppa Timer",
       "continue": "Fortsätta",
       "pause": "Paus",
-      "start": "Starta timer"
+      "start": "Starta timer",
+      "minutes": "minuter",
+      "minute": "minut"
     },
     "edit-timeline-event": "Redigera tidslinjehändelse",
     "timeline": "Tidslinje",

@@ -50,6 +50,9 @@
 </template>
 <script lang="ts">
   import { computed, ref, onBeforeUnmount } from "vue";
+import { useContext } from "@nuxtjs/composition-api";
+
+  import { TranslateResult } from "vue-i18n"
   // @ts-ignore typescript can't find our audio file, but it's there!
   import timerAlarmAudio from "~/assets/audio/kitchen_alarm.mp3";
   export default {
@@ -60,8 +63,20 @@
       },
     },
     setup(props) {
+      const { i18n } = useContext();
+      // Makes regex work with multiple languages via locales
+      const minuetStrings = computed<string[]>(() => {
+        console.log(i18n.availableLocales);
+        const result: TranslateResult[] = [];
+        i18n.availableLocales.forEach((locale) => {
+          result.push(i18n.t("recipe.timer.minute", locale ))
+          result.push(i18n.t("recipe.timer.minutes", locale ))
+        })
+        return result
+      })
+
       const extractMinutes = (text: string) => {
-        const regexMins = /\b(\d+)\s*(m|min|minuter)\b/g;
+        const regexMins = new RegExp(`\\b(\\d+)\\s*(${minuetStrings.value.join("|")})\\b`, "gi");
         const matchesMin = text.matchAll(regexMins);
         const timers = [];
         for (const match of matchesMin) {
@@ -148,6 +163,7 @@
           done
         };
       };
+
       return {
         timers,
       };

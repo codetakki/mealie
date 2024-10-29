@@ -574,7 +574,9 @@
       "stop-timer": "Parar Temporizador",
       "continue": "Continuar",
       "pause": "Pausa",
-      "start": "Iniciar cronômetro"
+      "start": "Iniciar cronômetro",
+      "minutes": "minutos",
+      "minute": "minuto"
     },
     "edit-timeline-event": "Editar Linha do Tempo do Evento",
     "timeline": "Linha do Tempo",

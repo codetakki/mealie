@@ -574,7 +574,9 @@
       "stop-timer": "Pysäytä ajastin",
       "continue": "Jatkaa",
       "pause": "Tauko",
-      "start": "Käynnistä ajastin"
+      "start": "Käynnistä ajastin",
+      "minutes": "minuuttia",
+      "minute": "minuutti"
     },
     "edit-timeline-event": "Muokkaa Aikajanan Tapahtumaa",
     "timeline": "Aikajana",

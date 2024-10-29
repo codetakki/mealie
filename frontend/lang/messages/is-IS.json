@@ -574,7 +574,9 @@
       "stop-timer": "Stop Timer",
       "continue": "Halda áfram",
       "pause": "Gera hlé",
-      "start": "Byrja tímamælir"
+      "start": "Byrja tímamælir",
+      "minutes": "mínútur",
+      "minute": "mínútu"
     },
     "edit-timeline-event": "Edit Timeline Event",
     "timeline": "Timeline",
