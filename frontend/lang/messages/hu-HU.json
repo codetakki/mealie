@@ -571,12 +571,7 @@
       "start-timer": "Időzítő elindítása",
       "pause-timer": "Időzítő megállítása",
       "resume-timer": "Időzítő folytatása",
-      "stop-timer": "Időzítő leállítása",
-      "continue": "Folytatás",
-      "pause": "Szünet",
-      "start": "Indítsa el az időzítőt",
-      "minutes": "jegyzőkönyv",
-      "minute": "perc"
+      "stop-timer": "Időzítő leállítása"
     },
     "edit-timeline-event": "Idővonal-esemény szerkesztése",
     "timeline": "Idővonal",

@@ -571,12 +571,7 @@
       "start-timer": "התחל את הטיימר",
       "pause-timer": "השהה את הטיימר",
       "resume-timer": "המשך את הטיימר",
-      "stop-timer": "עצור את הטיימר",
-      "continue": "לְהַמשִׁיך",
-      "pause": "הַפסָקָה",
-      "start": "הפעל טיימר",
-      "minutes": "פּרוֹטוֹקוֹל",
-      "minute": "דַקָה"
+      "stop-timer": "עצור את הטיימר"
     },
     "edit-timeline-event": "עריכת אירוע ציר זמן",
     "timeline": "ציר זמן",

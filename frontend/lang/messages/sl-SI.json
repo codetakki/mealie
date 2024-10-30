@@ -571,12 +571,7 @@
       "start-timer": "Zaženi časovnik",
       "pause-timer": "Ustavi časovnik",
       "resume-timer": "Nadaljuj časovnik",
-      "stop-timer": "Ustavi časovnik",
-      "continue": "Nadaljuj",
-      "pause": "Premor",
-      "start": "Zaženi časovnik",
-      "minutes": "minut",
-      "minute": "minuta"
+      "stop-timer": "Ustavi časovnik"
     },
     "edit-timeline-event": "Uredi dogodek na časovnici",
     "timeline": "Časovnica",

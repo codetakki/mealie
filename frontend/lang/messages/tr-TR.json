@@ -571,12 +571,7 @@
       "start-timer": "Zamanlayıcıyı Başlat",
       "pause-timer": "Zamanlayıcıyı Duraklat",
       "resume-timer": "Zamanlayıcıyı Sürdür",
-      "stop-timer": "Zamanlayıcıyı Durdur",
-      "continue": "Devam etmek",
-      "pause": "Duraklat",
-      "start": "Zamanlayıcıyı başlat",
-      "minutes": "dakika",
-      "minute": "dakika"
+      "stop-timer": "Zamanlayıcıyı Durdur"
     },
     "edit-timeline-event": "Zaman Çizelgesi Etkinliğini Düzenle",
     "timeline": "Zaman çizelgesi",

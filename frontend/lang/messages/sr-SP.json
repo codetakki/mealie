@@ -571,12 +571,7 @@
       "start-timer": "Start Timer",
       "pause-timer": "Pause Timer",
       "resume-timer": "Resume Timer",
-      "stop-timer": "Stop Timer",
-      "continue": "Continue",
-      "pause": "Pause",
-      "start": "Start timer",
-      "minutes": "minutes",
-      "minute": "minute"
+      "stop-timer": "Stop Timer"
     },
     "edit-timeline-event": "Уреди догађај на временској линији",
     "timeline": "Временска линија",

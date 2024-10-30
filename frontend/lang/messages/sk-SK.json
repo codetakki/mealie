@@ -571,12 +571,7 @@
       "start-timer": "Spustiť časovač",
       "pause-timer": "Pozastaviť časovač",
       "resume-timer": "Znova spustiť časovač",
-      "stop-timer": "Zastaviť časovač",
-      "continue": "Pokračovať",
-      "pause": "Pauza",
-      "start": "Spustiť časovač",
-      "minutes": "minút",
-      "minute": "minútu"
+      "stop-timer": "Zastaviť časovač"
     },
     "edit-timeline-event": "Upraviť udalosť na časovej osi",
     "timeline": "Časová os",

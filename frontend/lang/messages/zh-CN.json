@@ -571,12 +571,7 @@
       "start-timer": "开始计时",
       "pause-timer": "暂停计时",
       "resume-timer": "继续计时",
-      "stop-timer": "终止计时",
-      "continue": "继续",
-      "pause": "暂停",
-      "start": "启动定时器",
-      "minutes": "分钟",
-      "minute": "分钟"
+      "stop-timer": "终止计时"
     },
     "edit-timeline-event": "编辑时间轴事件",
     "timeline": "时间轴",

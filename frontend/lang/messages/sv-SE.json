@@ -571,12 +571,7 @@
       "start-timer": "Starta Timer",
       "pause-timer": "Pausa Timer",
       "resume-timer": "Återuppta Timer",
-      "stop-timer": "Stoppa Timer",
-      "continue": "Fortsätta",
-      "pause": "Paus",
-      "start": "Starta timer",
-      "minutes": "minuter",
-      "minute": "minut"
+      "stop-timer": "Stoppa Timer"
     },
     "edit-timeline-event": "Redigera tidslinjehändelse",
     "timeline": "Tidslinje",

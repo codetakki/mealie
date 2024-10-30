@@ -571,12 +571,7 @@
       "start-timer": "Start nedtelling",
       "pause-timer": "Pause nedtelling",
       "resume-timer": "Fortsett nedtelling",
-      "stop-timer": "Stopp nedtelling",
-      "continue": "Fortsette",
-      "pause": "Pause",
-      "start": "Start timer",
-      "minutes": "minutter",
-      "minute": "minutt"
+      "stop-timer": "Stopp nedtelling"
     },
     "edit-timeline-event": "Endre tidslinjehendelser",
     "timeline": "Tidslinje",

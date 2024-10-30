@@ -571,12 +571,7 @@
       "start-timer": "Wecker starten",
       "pause-timer": "Wecker pausieren",
       "resume-timer": "Wecker fortsetzen",
-      "stop-timer": "Wecker stoppen",
-      "continue": "Weitermachen",
-      "pause": "Pause",
-      "start": "Timer starten",
-      "minutes": "Minuten",
-      "minute": "Minute"
+      "stop-timer": "Wecker stoppen"
     },
     "edit-timeline-event": "Zeitstrahl-Ereignis bearbeiten",
     "timeline": "Zeitstrahl",
