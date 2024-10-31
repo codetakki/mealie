@@ -78,7 +78,7 @@
           <div class="d-flex align-center">
             <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
           </div>
-          <RecipePageIngredientToolsView v-if="!isEditForm" :recipe="recipe" :scale="scale" />
+          <RecipePageIngredientToolsView v-if="!isEditForm" :recipe="recipe" :scale="scale" :is-cook-mode="isCookMode" />
           <v-divider></v-divider>
         </v-col>
         <v-divider vertical></v-divider>

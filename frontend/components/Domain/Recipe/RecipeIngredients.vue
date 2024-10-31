@@ -64,6 +64,10 @@ btn-class="ml-auto"
       instructions: {
         type: Array as () => RecipeStep[],
         default: () => [],
+      },
+      isCookMode: {
+        type: Boolean,
+        default: false,
       }
     },
     setup(props) {
@@ -105,6 +109,9 @@ btn-class="ml-auto"
 
       // filter out instructions without ingredients, add "other ingredients"
       const compInstructions = computed(() => {
+        if (!props.instructions ) {
+          return [];
+        }
         const result = props.instructions.filter((step) => step.ingredientReferences && step.ingredientReferences.length > 0)
         result.push({
           title: i18n.t("recipe.other-ingredients") as string,
@@ -134,7 +141,10 @@ btn-class="ml-auto"
         return result
       })
       const hideStepHeaders = computed(() => {
-        return !props.instructions.some((step) => step.ingredientReferences && step.ingredientReferences.length > 0)
+        if (props.isCookMode){
+          return false
+        }
+        return !props.isCookMode || !props.instructions.some((step) => step.ingredientReferences && step.ingredientReferences.length > 0)
       })
       return {
         ...toRefs(state),
