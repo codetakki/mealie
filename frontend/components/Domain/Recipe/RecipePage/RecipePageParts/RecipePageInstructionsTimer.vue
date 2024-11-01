@@ -6,56 +6,59 @@
       v-for="(timer, i) in timers"
       :key="i"
       class="d-flex align-center my-2 justify-center">
-      <v-icon :color=" timer.value.done  ? 'success' : ''" :class=" timer.value.done  ? 'shake' : ''">mdi-timer</v-icon>
+      <v-icon :color=" timer.timerEnded  ? 'success' : ''" :class=" timer.timerEnded  ? 'shake' : ''">mdi-timer</v-icon>
       <v-btn
         icon
-        :disabled=" timer.value.remainingTime  <= 30"
+        :disabled=" timer.timerValue  <= 30"
         depressed
-        @click="timer.value.changeTimer(timer.value.remainingTime - 30)">
+        @click="timer.timerValue -= 30">
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      {{  timer.value.hours  ?  timer.value.hours  + "h" : "" }} {{  timer.value.minutes  ?  timer.value.minutes  + "m" : "" }}
-      {{ ( timer.value.seconds || ! timer.value.minutes) ?  timer.value.seconds + "s" : "" }}
+      {{ timer.simpleDisplayValue }}
       <v-btn
         icon
         depressed
-        @click="timer.value.changeTimer(timer.value.remainingTime + 30)"><v-icon>mdi-plus</v-icon></v-btn>
+        @click="timer.timerValue += 30"><v-icon>mdi-plus</v-icon></v-btn>
       <v-btn
-        v-if="! timer.value.isCounting  && ! timer.value.hasStarted "
+        v-if="! timer.timerRunning && ! timer.timerPaused  && !timer.timerEnded"
         rounded
         depressed
-        @click=" timer.value.startAlarm"> {{$t("recipe.timer.start")}} </v-btn>
-      <v-btn
-        v-else-if="( timer.value.hasStarted  &&  timer.value.isCounting )"
-        rounded
-        depressed
-        @click="timer.value.pauseTimer"> {{$t("recipe.timer.pause")}}
-      </v-btn>
-      <span v-else-if="! timer.value.done ">
+        @click=" timer.startTimer"> {{$t("recipe.timer.start")}} </v-btn>
+      <template v-else>
         <v-btn
+          v-if="(!timer.timerEnded && timer.timerRunning && !timer.timerPaused)"
           rounded
           depressed
-          @click=" timer.value.startAlarm">
-          {{$t("recipe.timer.continue")}}
+          @click="timer.pauseTimer">
+          {{$t("recipe.timer.pause")}}
         </v-btn>
-        <v-btn
-          icon
-          @click=" timer.value.resetTimer"><v-icon>mdi-restore</v-icon></v-btn>
-      </span>
-      <span v-else>
-        <v-btn
-          icon
-          @click=" timer.value.resetTimer"><v-icon>mdi-restore</v-icon></v-btn>
-      </span>
+        <span v-else-if="!timer.timerEnded " >
+          <v-btn
+            rounded
+            depressed
+            @click=" timer.resumeTimer">
+            {{$t("recipe.timer.continue")}}
+          </v-btn>
+          <v-btn
+            icon
+            @click=" timer.resetTimer"><v-icon>mdi-restore</v-icon></v-btn>
+        </span>
+        <span v-else>
+          <v-btn
+            icon
+            @click=" timer.resetTimer"><v-icon>mdi-restore</v-icon></v-btn>
+        </span>
+      </template>
+
     </div>
   </div>
 </template>
 <script lang="ts">
-  import { computed, ref, onBeforeUnmount } from "vue";
+  import { computed } from "vue";
   import { useContext } from "@nuxtjs/composition-api";
   import { TranslateResult } from "vue-i18n"
+  import useTimer from "~/composables/use-timer";
   // @ts-ignore typescript can't find our audio file, but it's there!
-  import timerAlarmAudio from "~/assets/audio/kitchen_alarm.mp3";
 
   export default {
     props: {
@@ -77,105 +80,21 @@
         return result
       })
 
-      const extractMinutes = (text: string) => {
+      const extractTimersFromText = (text: string) => {
         const regexMins = new RegExp(`\\b(\\d+)\\s*(${minuetStrings.value.join("|")})\\b`, "gi");
         const matchesMin = text.matchAll(regexMins);
         const timers = [];
         for (const match of matchesMin) {
-          timers.push(createTimer(Number(match[1]) * 60));
+          const timer = useTimer("00",match[1], "00", { padTimes: false })
+          timer.initializeTimer();
+          timers.push(timer);
         }
         return timers;
       };
-      const timers = computed(() => {
-        return extractMinutes(props.text as string);
-      });
-
-      const createTimer =  (totalSeconds: number)  => {
-        const remainingTime = ref(totalSeconds);
-        const hours = computed(() => Math.floor(remainingTime.value  / 3600));
-        const minutes = computed(() => Math.floor((remainingTime.value  % 3600) / 60));
-        const seconds = computed(() => remainingTime.value  % 60);
-        const isCounting = ref(false);
-        const hasStarted = ref(false)
-        const done = ref(false)
-        const changeTimer = (value: number) => {
-          remainingTime.value = value
-        }
-        // eslint-disable-next-line no-undef
-        let timer: string | number | NodeJS.Timer | undefined;
-
-        const formattedTime = computed(() => {
-          const hrs = Math.floor(remainingTime.value  / 3600);
-          const mins = Math.floor((remainingTime.value  % 3600) / 60);
-          const secs = remainingTime.value  % 60;
-          return `${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs
-            .toString()
-            .padStart(2, "0")}`;
-        });
-
-        const startAlarm = () => {
-          if (remainingTime.value  > 0) {
-            isCounting.value  = true;
-            timer = setInterval(updateTimer, 1000);
-            hasStarted.value  = true
-          }
-        };
-
-        // ts doesn't recognize timerAlarmAudio because it's a weird import
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        const alarmSound = new Audio(timerAlarmAudio);
-        alarmSound.loop = true;
-        const updateTimer = () => {
-          if (remainingTime.value  >= 1) {
-            remainingTime.value --;
-          } else {
-            pauseTimer();
-            alarmSound.play();
-            done.value  = true;
-          }
-        };
-
-        const pauseTimer = () => {
-          isCounting.value  = false;
-          clearInterval(timer);
-          alarmSound.pause();
-        };
-
-        const resetTimer = () => {
-          clearInterval(timer);
-          remainingTime.value  = totalSeconds;
-          isCounting.value  = false;
-          hasStarted.value  = false;
-          done.value  = false;
-          alarmSound.pause();
-        };
-
-        onBeforeUnmount(() => {
-          resetTimer();
-        });
-        const returnValue = computed(() => {
-          return {
-          hours: hours.value ,
-          minutes: minutes.value ,
-          seconds: seconds.value ,
-          remainingTime: remainingTime.value ,
-          isCounting: isCounting.value ,
-          formattedTime: formattedTime.value ,
-          startAlarm,
-          resetTimer,
-          pauseTimer,
-          originalTimer: totalSeconds,
-          hasStarted: hasStarted.value,
-          done: done.value,
-          changeTimer
-        };
-        })
-        return returnValue
-      };
 
       return {
-        timers,
-      };
+        timers:  extractTimersFromText(props.text as string)
+      }
     },
   };
 </script>

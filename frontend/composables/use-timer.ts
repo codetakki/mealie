@@ -1,4 +1,4 @@
-import { computed, reactive, ref, toRefs } from "@nuxtjs/composition-api";
+import { computed, reactive, ref, toRefs, watch } from "@nuxtjs/composition-api";
 // @ts-ignore typescript can't find our audio file, but it's there!
 import timerAlarmAudio from "~/assets/audio/kitchen_alarm.mp3";
 
@@ -10,6 +10,7 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
     timerEnded: false,
     timerInitialValue: 0,
     timerValue: 0,
+    timerPaused: false
   });
 
   // ts doesn't recognize timerAlarmAudio because it's a weird import
@@ -40,12 +41,14 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
       timerSeconds.value = timerSeconds.value.padStart(2, "0");
     }
   }
-
+  watch(() => state.timerValue, () => updateHourMinSec(state.timerValue));
+  function updateTimerValue(newValue: number) {
+    state.timerValue = newValue
+  }
   let timerInterval: number | null = null;
   function decrementTimer() {
     if (state.timerValue > 0) {
       state.timerValue -= 1;
-      updateHourMinSec(state.timerValue);
     }
     else {
       state.timerRunning = false;
@@ -73,8 +76,6 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
     state.timerInitialValue = (hours * 3600) + (minutes * 60) + seconds;
     state.timerValue = state.timerInitialValue;
 
-
-    updateHourMinSec(state.timerValue);
   };
 
   function startTimer() {
@@ -86,6 +87,7 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
 
   function pauseTimer() {
     state.timerRunning = false;
+    state.timerPaused = true;
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
@@ -94,6 +96,7 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
 
   function resumeTimer() {
     state.timerRunning = true;
+    state.timerPaused = false;
     timerInterval = setInterval(decrementTimer, 1000) as unknown as number;
   };
 
@@ -101,7 +104,7 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
     state.timerInitialized = false;
     state.timerRunning = false;
     state.timerEnded = false;
-
+    state.timerPaused = false;
     timerAlarm.pause();
     timerAlarm.currentTime = 0;
 
@@ -109,13 +112,24 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
     timerMinutes.value = "00";
     timerSeconds.value = "00";
 
-    state.timerValue = 0;
+    state.timerValue = state.timerInitialValue;
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
     }
-  };
 
+  };
+  const simpleDisplayValue = computed(() => {
+    return computed(() => {
+      const h = parseInt(timerHours.value.toString());
+      const m = parseInt(timerMinutes.value.toString());
+      const s = parseInt(timerSeconds.value.toString());
+      const hours = h > 0 ? `${h}h` : "";
+      const minutes = m > 0 ? `${m}m` : "";
+      const seconds = m > 0 && s === 0 ? "" : `${s}s`;
+      return [hours, minutes, seconds].filter(Boolean).join("");
+    })
+  })
   return reactive({
     ...toRefs(state),
     timerHours,
@@ -126,6 +140,8 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
     pauseTimer,
     resumeTimer,
     resetTimer,
-    startTimer
+    startTimer,
+    updateTimerValue,
+    simpleDisplayValue: simpleDisplayValue.value
   })
 }
