@@ -6,7 +6,9 @@
       v-for="(timer, i) in timers"
       :key="i"
       class="d-flex align-center my-2 justify-center">
-      <v-icon :color=" timer.timerEnded  ? 'success' : ''" :class=" timer.timerEnded  ? 'shake' : ''">mdi-timer</v-icon>
+      <v-icon v-if="!timer.timerRunning && !timer.timerPaused" :color=" timer.timerEnded  ? 'success' : ''" :class=" timer.timerEnded  ? 'shake' : ''">mdi-timer</v-icon>
+      <v-icon v-else color="primary" :class="timer.timerRunning  ? 'tick' : ''">mdi-timer</v-icon>
+
       <v-btn
         icon
         :disabled=" timer.timerValue  <= 30"
@@ -49,7 +51,6 @@
             @click=" timer.resetTimer"><v-icon>mdi-restore</v-icon></v-btn>
         </span>
       </template>
-
     </div>
   </div>
 </template>
@@ -99,6 +100,26 @@
   };
 </script>
 <style scoped>
+  .tick {
+    animation: tick 4s linear infinite;
+  }
+  @keyframes tick {
+    0% {
+      transform: rotate(15deg);
+    }
+    25% {
+      transform: rotate(-15deg);
+    }
+    50% {
+      transform: rotate(15deg);
+    }
+    75% {
+      transform: rotate(-15deg);
+    }
+    100% {
+      transform: rotate(15deg);
+    }
+  }
   .shake {
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
   }
