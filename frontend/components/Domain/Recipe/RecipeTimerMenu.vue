@@ -125,7 +125,6 @@ import { computed, defineComponent, reactive, toRefs, useContext, watch } from "
 import { ButtonOption } from "~/components/global/BaseButtonGroup.vue";
 import useTimer from "~/composables/use-timer";
 // @ts-ignore typescript can't find our audio file, but it's there!
-import timerAlarmAudio from "~/assets/audio/kitchen_alarm.mp3";
 
 export default defineComponent({
   props: {
