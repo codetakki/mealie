@@ -4,6 +4,8 @@
       :value="recipe.recipeIngredient"
       :scale="scale"
       :disable-amount="recipe.settings.disableAmount"
+      :instructions="recipe.recipeInstructions"
+      :is-cook-mode="isCookMode"
     />
     <div v-if="!isEditMode && recipe.tools && recipe.tools.length > 0">
       <h2 class="mb-2 mt-4">{{ $t('tool.required-tools') }}</h2>
@@ -46,6 +48,10 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    isCookMode: {
+      type: Boolean,
+      default: false,
+    }
   },
   setup(props) {
     const { isOwnGroup } = useLoggedInState();
