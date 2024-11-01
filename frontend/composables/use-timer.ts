@@ -1,4 +1,4 @@
-import { computed, reactive, ref, toRefs, watch } from "@nuxtjs/composition-api";
+import { computed, onUnmounted, reactive, ref, toRefs, watch } from "@nuxtjs/composition-api";
 // @ts-ignore typescript can't find our audio file, but it's there!
 import timerAlarmAudio from "~/assets/audio/kitchen_alarm.mp3";
 
@@ -129,6 +129,9 @@ export default function createTimer(initialHour = "00", initialMin = "00", initi
       const seconds = m > 0 && s === 0 ? "" : `${s}s`;
       return [hours, minutes, seconds].filter(Boolean).join("");
     })
+  })
+  onUnmounted(() => {
+    resetTimer();
   })
   return reactive({
     ...toRefs(state),
