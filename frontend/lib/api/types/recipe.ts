@@ -266,7 +266,9 @@ export interface RecipeTool {
 export interface RecipeStep {
   id?: string | null;
   title?: string | null;
+  summary?: string | null;
   text: string;
+  timers: number[];
   ingredientReferences?: IngredientReferences[];
 }
 export interface RecipeAsset {
