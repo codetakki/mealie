@@ -11,6 +11,7 @@ from slugify import slugify
 
 from mealie.core.root_logger import get_logger
 from mealie.lang.providers import Translator
+from mealie.services.parser_services.parser_utils.duration_parser import DurationParser
 
 logger = get_logger("recipe-scraper")
 
@@ -121,6 +122,13 @@ def clean_image(image: str | list | dict | None = None, default: str = "no image
 
 
 def clean_instructions(steps_object: list | dict | str, default: list | None = None) -> list[dict]:
+    instructions = parse_instructions(steps_object, default)
+    instructions = add_timers_to_instructions(instructions)
+
+    return instructions
+
+
+def parse_instructions(steps_object: list | dict | str, default: list | None = None) -> list[dict]:
     """
     instructions attempts to parse the instructions field from a recipe and return a list of
     dictionaries. See match statement for supported types and structures
@@ -212,6 +220,20 @@ def clean_instructions(steps_object: list | dict | str, default: list | None = N
             )
         case _:
             raise TypeError(f"Unexpected type for instructions: {type(steps_object)}, {steps_object}")
+
+
+def add_timers_to_instructions(instructions: list[dict]) -> list[dict]:
+    duration_parser = DurationParser()
+
+    for instruction in instructions:
+        instruction_text = instruction.get("text")
+        if not instruction_text:
+            continue
+
+        if timers := duration_parser.get_all_durations(instruction_text):
+            instruction["timers"] = [int(timer) for timer in timers]
+
+    return instructions
 
 
 def _sanitize_instruction_text(line: str | dict) -> str:
