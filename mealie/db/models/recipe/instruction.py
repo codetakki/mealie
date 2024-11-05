@@ -1,5 +1,8 @@
+import json
+
 from pydantic import ConfigDict
 from sqlalchemy import ForeignKey, Integer, String, orm
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .._model_base import BaseMixins, SqlAlchemyBase
@@ -23,13 +26,37 @@ class RecipeInstruction(SqlAlchemyBase):
     recipe_id: Mapped[GUID | None] = mapped_column(GUID, ForeignKey("recipes.id"), index=True)
     position: Mapped[int | None] = mapped_column(Integer, index=True)
     type: Mapped[str | None] = mapped_column(String, default="")
-    title: Mapped[str | None] = mapped_column(String)  # This is the section title!!!
-    text: Mapped[str | None] = mapped_column(String, index=True)
-    summary: Mapped[str | None] = mapped_column(String)
 
+    title: Mapped[str | None] = mapped_column(String)
+    """The section title"""
+    summary: Mapped[str | None] = mapped_column(String)
+    """The header/summary of this single instruction (e.g. "Step 1")"""
+    text: Mapped[str | None] = mapped_column(String, index=True)
+    """The actual instruction text"""
+
+    timers_json: Mapped[str | None] = mapped_column(String)
     ingredient_references: Mapped[list[RecipeIngredientRefLink]] = orm.relationship(
         RecipeIngredientRefLink, cascade="all, delete-orphan"
     )
+
+    @hybrid_property
+    def timers(self) -> list[int]:
+        if not self.timers_json:
+            return []
+
+        timers = json.loads(self.timers_json)
+        if not isinstance(timers, list):
+            return []
+        else:
+            return timers
+
+    @timers.setter
+    def set_timers(self, value: list[int]) -> None:
+        if not isinstance(value, list):
+            value = []
+
+        self.timers_json = json.dumps(value)
+
     model_config = ConfigDict(
         exclude={
             "id",
