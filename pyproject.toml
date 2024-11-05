@@ -50,6 +50,7 @@ pyjwt = "^2.8.0"
 openai = "^1.27.0"
 typing-extensions = "^4.12.2"
 itsdangerous = "^2.2.0"
+dateparser = "^1.2.0"
 
 [tool.poetry.group.postgres.dependencies]
 psycopg2-binary = { version = "^2.9.1" }
@@ -72,6 +73,7 @@ types-requests = "^2.27.12"
 types-urllib3 = "^1.26.11"
 pydantic-to-typescript2 = "^1.0.4"
 freezegun = "^1.5.1"
+types-dateparser = "^1.2.0.20240420"
 
 
 [build-system]
