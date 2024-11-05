@@ -50,8 +50,8 @@ class RecipeInstruction(SqlAlchemyBase):
         else:
             return timers
 
-    @timers.setter
-    def set_timers(self, value: list[int]) -> None:
+    @timers.setter  # type: ignore
+    def timers(self, value: list[int]) -> None:
         if not isinstance(value, list):
             value = []
 
@@ -61,9 +61,12 @@ class RecipeInstruction(SqlAlchemyBase):
         exclude={
             "id",
             "ingredient_references",
+            "timers",
         }
     )
 
     @auto_init()
-    def __init__(self, ingredient_references, session, **_) -> None:
+    def __init__(self, ingredient_references, timers, session, **_) -> None:
         self.ingredient_references = [RecipeIngredientRefLink(**ref, session=session) for ref in ingredient_references]
+        if timers:
+            self.timers = timers  # type: ignore
