@@ -72,36 +72,49 @@
       <RecipePrintContainer :recipe="recipe" :scale="scale" />
     </v-container>
     <!-- Cook mode displayes two columns with ingredients and instructions side by side, each being scrolled individually, allowing to view both at the same timer -->
-    <v-sheet v-show="isCookMode" key="cookmode" :style="{height: $vuetify.breakpoint.smAndUp ? 'calc(100vh - 48px)' : ''}"> <!-- the calc is to account for the toolbar a more dynamic solution could be needed  -->
-      <v-row style="height: 100%;"  no-gutters class="overflow-hidden">
-        <v-col cols="12" sm="5" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;">
+    <v-sheet v-show="isCookMode && !hasLinkedIngredients" key="cookmode" :style="{height: $vuetify.breakpoint.smAndUp ? 'calc(100vh - 48px)' : ''}"> <!-- the calc is to account for the toolbar a more dynamic solution could be needed  -->
+      <v-row  style="height: 100%;"  no-gutters class="overflow-hidden">
+        <v-col  cols="12" sm="5" class="overflow-y-auto pl-4 pr-3 py-2" style="height: 100%;">
           <div class="d-flex align-center">
             <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
           </div>
           <RecipePageIngredientToolsView v-if="!isEditForm" :recipe="recipe" :scale="scale" :is-cook-mode="isCookMode" />
           <v-divider></v-divider>
         </v-col>
-        <v-divider vertical></v-divider>
-        <v-col class="overflow-y-auto py-2" style="height: 100%;" >
-            <RecipePageInstructions
-              v-model="recipe.recipeInstructions"
-              class="overflow-y-hidden px-4"
-              :assets.sync="recipe.assets"
-              :recipe="recipe"
-              :scale="scale"
-            />
+        <v-col class="overflow-y-auto py-2" style="height: 100%;" cols="12" sm="7">
+          <RecipePageInstructions
+            v-model="recipe.recipeInstructions"
+            class="overflow-y-hidden px-4"
+            :assets.sync="recipe.assets"
+            :recipe="recipe"
+            :scale="scale"
+          />
         </v-col>
       </v-row>
-      <v-btn
-        fab
-        small
-        color="primary"
-        style="position: fixed; right: 12px; top: 60px;"
-        @click="toggleCookMode()"
-        >
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
+
     </v-sheet>
+    <v-sheet v-show="isCookMode && hasLinkedIngredients">
+      <div class="mx-4 mt-2">
+        <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
+      </div>
+      <RecipePageInstructions
+        v-model="recipe.recipeInstructions"
+        class="overflow-y-hidden px-4"
+        :assets.sync="recipe.assets"
+        :recipe="recipe"
+        :scale="scale"
+      />
+    </v-sheet>
+    <v-btn
+      v-if="isCookMode"
+      fab
+      small
+      color="primary"
+      style="position: fixed; right: 12px; top: 60px;"
+      @click="toggleCookMode()"
+      >
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
   </div>
 
 </template>
@@ -206,7 +219,9 @@ export default defineComponent({
       deactivateNavigationWarning();
       toggleCookMode()
     });
-
+    const hasLinkedIngredients = computed(() => {
+      return props.recipe.recipeInstructions.some((step) => step.ingredientReferences && step.ingredientReferences.length > 0);
+    })
     /** =============================================================
      * Set State onMounted
      */
@@ -304,6 +319,7 @@ export default defineComponent({
       saveRecipe,
       deleteRecipe,
       addStep,
+      hasLinkedIngredients
     };
   },
   head: {},
