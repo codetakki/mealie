@@ -239,6 +239,7 @@
                     :key="ing.referenceId"
                     :markup="getIngredientByRefId(ing.referenceId)"
                   />
+                  <RecipeEditTimers v-model="step.timers"></RecipeEditTimers>
                 </v-card-text>
               </DropZone>
               <v-expand-transition>
@@ -253,8 +254,8 @@
                         :markup="getIngredientByRefId(ing.referenceId)"
                       />
                     </div>
-                    <div>
-                      <RecipePageInstructionsTimer :text="step.text"></RecipePageInstructionsTimer>
+                    <div v-if="!isEditForm && step.timers && step.timers.length > 0 ">
+                      <RecipePageInstructionsTimer :timers="step.timers"></RecipePageInstructionsTimer>
                     </div>
                   </v-card-text>
                 </div>
@@ -283,6 +284,7 @@ import {
 } from "@nuxtjs/composition-api";
 import RecipeIngredientHtml from "../../RecipeIngredientHtml.vue";
 import RecipePageInstructionsTimer from "./RecipePageInstructionsTimer.vue";
+import RecipeEditTimers from "./RecipeEditTimers.vue"
 import { RecipeStep, IngredientReferences, RecipeIngredient, RecipeAsset, Recipe } from "~/lib/api/types/recipe";
 import { parseIngredientText } from "~/composables/recipes";
 import { uuid4, detectServerBaseUrl } from "~/composables/use-utils";
@@ -305,6 +307,7 @@ export default defineComponent({
     RecipeIngredientHtml,
     DropZone,
     RecipePageInstructionsTimer,
+    RecipeEditTimers
   },
   props: {
     value: {
