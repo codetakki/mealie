@@ -1,7 +1,7 @@
 <template v-if="timers && timers.length">
 <div @click.stop>
 
-  <v-divider class="mb-2"></v-divider>
+  <v-divider class="mb-2 mt-2 mb-2"></v-divider>
   <div
     v-for="(timer, i) in compTimers"
     :key="i"
@@ -9,11 +9,11 @@
     <v-icon
       v-if="!timer.timerRunning && !timer.timerPaused"
       :color="timer.timerEnded ? 'success' : ''"
-      :class="timer.timerEnded ? 'shake' : ''">mdi-timer</v-icon>
+      :class="timer.timerEnded ? 'shake' : ''">mdi-alarm</v-icon>
     <v-icon
       v-else
       color="primary"
-      :class="timer.timerRunning ? 'tick' : ''">mdi-timer</v-icon>
+      :class="timer.timerRunning ? 'tick' : ''">mdi-alarm</v-icon>
 
     <v-btn
       icon
@@ -22,7 +22,7 @@
       @click="timer.timerValue -= 30">
       <v-icon>mdi-minus</v-icon>
     </v-btn>
-    {{ timer.simpleDisplayValue }}
+      {{ timer.simpleDisplayValue }}
     <v-btn
       icon
       depressed
