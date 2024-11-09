@@ -93,13 +93,13 @@
       </v-row>
 
     </v-sheet>
-    <v-sheet v-show="isCookMode && hasLinkedIngredients">
-      <div class="mx-4 mt-2">
-        <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape" />
+    <v-sheet v-show="isCookMode && hasLinkedIngredients" class="px-2 px-md-4" >
+      <div class="mt-2">
+        <RecipePageScale :recipe="recipe" :scale.sync="scale" :landscape="landscape"/>
       </div>
       <RecipePageInstructions
         v-model="recipe.recipeInstructions"
-        class="overflow-y-hidden px-4"
+        class="overflow-y-hidden mt-n5"
         :assets.sync="recipe.assets"
         :recipe="recipe"
         :scale="scale"

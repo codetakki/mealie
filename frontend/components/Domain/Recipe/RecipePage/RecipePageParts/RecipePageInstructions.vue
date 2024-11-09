@@ -251,29 +251,23 @@
                         cols="12"
                         sm="5"
                       >
-                        <RecipeIngredients
-                        :value="recipe.recipeIngredient.filter((ing) => {
-                          if(!step.ingredientReferences) return false
-                          return step.ingredientReferences.map((ref) => ref.referenceId).includes(ing.referenceId || '')
-                        })"
-                        :scale="scale"
-                        :disable-amount="recipe.settings.disableAmount"
-                        :is-cook-mode="isCookMode"
-                        />
+                        <div class="ml-n4">
+                          <RecipeIngredients
+                            :value="recipe.recipeIngredient.filter((ing) => {
+                              if(!step.ingredientReferences) return false
+                              return step.ingredientReferences.map((ref) => ref.referenceId).includes(ing.referenceId || '')
+                            })"
+                            :scale="scale"
+                            :disable-amount="recipe.settings.disableAmount"
+                            :is-cook-mode="isCookMode"
+                          />
+                        </div>
                       </v-col>
                       <v-divider v-if="isCookMode && step.ingredientReferences && step.ingredientReferences.length > 0 && $vuetify.breakpoint.smAndUp" vertical ></v-divider>
                       <v-col>
                         <SafeMarkdown class="markdown" :source="step.text" />
                       </v-col>
                     </v-row>
-                    <!-- <div v-if="isCookMode && step.ingredientReferences && step.ingredientReferences.length > 0">
-                      <v-divider class="mb-2"></v-divider>
-                      <RecipeIngredientHtml
-                        v-for="ing in step.ingredientReferences"
-                        :key="ing.referenceId"
-                        :markup="getIngredientByRefId(ing.referenceId)"
-                      />
-                    </div> -->
                   </v-card-text>
                 </div>
               </v-expand-transition>
