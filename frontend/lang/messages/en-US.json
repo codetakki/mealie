@@ -663,7 +663,8 @@
       "no-food": "No Food"
     },
     "reset-servings-count": "Reset Servings Count",
-    "other-ingredients": "Other"
+    "other-ingredients": "Other",
+    "not-linked-ingredients": "Not linked ingredients"
   },
   "search": {
     "advanced-search": "Advanced Search",

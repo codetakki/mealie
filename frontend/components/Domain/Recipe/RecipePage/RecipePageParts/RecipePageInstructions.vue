@@ -276,7 +276,7 @@
         </div>
       </TransitionGroup>
     </draggable>
-    <v-divider class="mt-10 d-flex d-md-none"/>
+    <v-divider v-if="!isCookMode" class="mt-10 d-flex d-md-none"/>
   </section>
 </template>
 

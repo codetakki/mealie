@@ -104,6 +104,18 @@
         :recipe="recipe"
         :scale="scale"
       />
+      <div class="px-2 px-md-4 pb-4 ">
+        <v-card class="elevation-2">
+          <v-card-title>{{ $t('recipe.not-linked-ingredients') }}</v-card-title>
+            <RecipeIngredients
+              :value="notLinkedIngredients"
+              :scale="scale"
+              :disable-amount="recipe.settings.disableAmount"
+              :is-cook-mode="isCookMode">
+
+            </RecipeIngredients>
+        </v-card>
+      </div>
     </v-sheet>
     <v-btn
       v-if="isCookMode"
@@ -131,6 +143,7 @@ import {
 useRoute,
 } from "@nuxtjs/composition-api";
 import { invoke, until } from "@vueuse/core";
+import RecipeIngredients from "../RecipeIngredients.vue";
 import RecipePageEditorToolbar from "./RecipePageParts/RecipePageEditorToolbar.vue";
 import RecipePageFooter from "./RecipePageParts/RecipePageFooter.vue";
 import RecipePageHeader from "./RecipePageParts/RecipePageHeader.vue";
@@ -174,6 +187,7 @@ export default defineComponent({
     RecipeNotes,
     RecipePageInstructions,
     RecipePageFooter,
+    RecipeIngredients
   },
   props: {
     recipe: {
@@ -192,6 +206,13 @@ export default defineComponent({
     const { pageMode, editMode, setMode, isEditForm, isEditJSON, isCookMode, isEditMode, toggleCookMode } =
       usePageState(props.recipe.slug);
     const { deactivateNavigationWarning } = useNavigationWarning();
+    const notLinkedIngredients = computed(() => {
+      console.log("inst",props.recipe.recipeInstruction);
+      return props.recipe.recipeIngredient.filter((ingredient) => {
+        return !props.recipe.recipeInstructions.some((step) => step.ingredientReferences?.map((ref) => ref.referenceId).includes(ingredient.referenceId));
+      })
+    })
+    console.log(notLinkedIngredients);
 
     /** =============================================================
      * Recipe Snapshot on Mount
@@ -319,7 +340,8 @@ export default defineComponent({
       saveRecipe,
       deleteRecipe,
       addStep,
-      hasLinkedIngredients
+      hasLinkedIngredients,
+      notLinkedIngredients
     };
   },
   head: {},
