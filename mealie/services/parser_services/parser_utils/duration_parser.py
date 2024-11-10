@@ -15,9 +15,10 @@ class DurationParser:
         return td.total_seconds()
 
     @classmethod
-    def get_duration(cls, text: str) -> float | None:
+    def get_duration(cls, text: str, languages: list[str] | tuple[str, ...] | set[str] | None = None) -> float | None:
         dt = dateparser.parse(
             text,
+            languages=languages,
             settings={
                 "RELATIVE_BASE": cls._BASE,
                 "PARSERS": ["relative-time"],
@@ -31,9 +32,12 @@ class DurationParser:
         return cls._get_duration_seconds_from_datetime(dt)
 
     @classmethod
-    def get_all_durations(cls, text: str) -> list[float]:
+    def get_all_durations(
+        cls, text: str, languages: list[str] | tuple[str, ...] | set[str] | None = None
+    ) -> list[float]:
         dts = dateparser.search.search_dates(
             text,
+            languages=languages,
             settings={
                 "RELATIVE_BASE": cls._BASE,
                 "PARSERS": ["relative-time"],
