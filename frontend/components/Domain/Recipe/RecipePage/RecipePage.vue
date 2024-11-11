@@ -104,8 +104,9 @@
         :recipe="recipe"
         :scale="scale"
       />
+      <v-divider></v-divider>
       <div class="px-2 px-md-4 pb-4 ">
-        <v-card class="elevation-2">
+        <v-card flat>
           <v-card-title>{{ $t('recipe.not-linked-ingredients') }}</v-card-title>
             <RecipeIngredients
               :value="notLinkedIngredients"
