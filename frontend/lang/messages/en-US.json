@@ -1371,5 +1371,10 @@
       "is-like": "is like",
       "is-not-like": "is not like"
     }
+  },
+  "timer": {
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
   }
 }

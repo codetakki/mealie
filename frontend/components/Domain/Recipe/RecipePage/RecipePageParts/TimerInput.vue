@@ -3,7 +3,7 @@
     <v-icon class="mr-2">mdi-alarm</v-icon>
     <v-text-field
       v-model="hours"
-      label="Hours"
+      :label="$t('timer.hours')"
       type="number"
       class="mr-2"
       min="0"
@@ -15,7 +15,7 @@
     ></v-text-field>
     <v-text-field
       :value="minutes"
-      label="Minutes"
+      :label="$t('timer.minutes')"
       type="number"
       class="mr-2"
       min="0"
@@ -27,7 +27,7 @@
     ></v-text-field>
     <v-text-field
       :value="seconds"
-      label="Seconds"
+      :label="$t('timer.seconds')"
       type="number"
       min="0"
       max="59"
