@@ -270,6 +270,7 @@ export interface RecipeStep {
   text: string;
   timers: number[];
   ingredientReferences?: IngredientReferences[];
+  summary?: string | null;
 }
 export interface RecipeAsset {
   name: string;
