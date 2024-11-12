@@ -1,7 +1,7 @@
 <template v-if="timers && timers.length">
-<div @click.stop>
+<div class="mb-n4" @click.stop>
 
-  <v-divider class="mb-2 mt-2 mb-2"></v-divider>
+  <v-divider class="mb-2 mt-3 mb-2"></v-divider>
   <div
     v-for="(timer, i) in compTimers"
     :key="i"
