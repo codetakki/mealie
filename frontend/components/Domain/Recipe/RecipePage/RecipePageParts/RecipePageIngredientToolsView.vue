@@ -4,6 +4,7 @@
       :value="recipe.recipeIngredient"
       :scale="scale"
       :disable-amount="recipe.settings.disableAmount"
+      :instructions="recipe.recipeInstructions"
       :is-cook-mode="isCookMode"
     />
     <div v-if="!isEditMode && recipe.tools && recipe.tools.length > 0">

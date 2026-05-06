@@ -65,7 +65,7 @@
     </v-dialog>
 
     <div class="d-flex justify-space-between justify-start">
-      <h2 v-if="!isCookMode" class="mb-4 mt-1">{{ $t("recipe.instructions") }}</h2>
+      <h2 class="mb-4 mt-1">{{ $t("recipe.instructions") }}</h2>
       <BaseButton v-if="!isEditForm && !isCookMode" minor cancel color="primary" @click="toggleCookMode()">
         <template #icon>
           {{ $globals.icons.primary }}
